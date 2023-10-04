@@ -1,0 +1,11 @@
+### KakaoCoordinate.py
+- kakao API를 활용해서 주소 ->좌표을 excel에 자동 기입해주는 코드입니다.
+- 사용법 
+    - Kakao API Key를 발급받고 해더값에 해당 값을 넣어줍니다.
+    - config.py 파일에서 해당 하는 값들을 넣어줍니다.
+    - EXCEL_FILENAME = 엑셀 파일 이름 (test.xlsx)
+    - WORKSHEET = 첫 번째 Sheet일 경우: 0(기본값)
+    - START_ROW = 시작 행: 1(기본값)
+    - ADDRESS_COLUMN = 주소 값이 들어간 열: A(기본값)
+    - LATITUDE_COLUMN = Lat 좌표 값이 들어갈 열: B(기본값)
+    - LONGITUDE_COLUMN = LNG 좌표 값이 들어갈 열: C(기본값)

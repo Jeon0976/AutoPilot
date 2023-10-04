@@ -1,8 +1,9 @@
 import requests
 import openpyxl
 
-# Kakao API 키 설정 
-KAKAO_API_KEY = "KakaoAK a29374543e1f8c5fdcc063c3cfca8c77"
+from api import KAKAO_API_KEY
+from config import KakaoMapAddressToCoordinate as KMAC
+
 URL = "https://dapi.kakao.com/v2/local/search/address"
 
 # x, y 좌표 반환 함수 
@@ -23,17 +24,21 @@ def get_coordinates(address):
         return None,None
     return data['documents'][0]['x'], data['documents'][0]['y']
 
-wb = openpyxl.load_workbook("jeonju_jeonbuk_moa-2.xlsx")
-ws = wb.worksheets[0]
+def get_coordinates_from_excel():
+    wb = openpyxl.load_workbook(KMAC.EXCEL_FILENAME)
+    ws = wb.worksheets[0]
 
-row = 3
-while ws[f"C{row}"].value:
-    address = ws[f"C{row}"].value
-    lat, lng = get_coordinates(address)
-    if lat and lng:
-        ws[f"D{row}"].value = lat
-        ws[f"E{row}"].value = lng
-    row += 1
+    row = KMAC.START_ROW
+    while ws[f"{KMAC.ADDRESS_COLUMN}{row}"].value:
+        address = ws[f"{KMAC.ADDRESS_COLUMN}{row}"].value
+        lat, lng = get_coordinates(address)
+        if lat and lng:
+            ws[f"{KMAC.LATITUDE_COLUMN}{row}"].value = lat
+            ws[f"{KMAC.LONGITUDE_COLUMN}{row}"].value = lng
+        row += 1
 
-wb.save("update.xlsx")
-print("End Work")
+    wb.save("update_" + KMAC.EXCEL_FILENAME)
+    print("End Work")
+
+if __name__ == "__main__":
+    get_coordinates_from_excel()

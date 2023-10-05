@@ -26,7 +26,7 @@ def get_coordinates(address):
 
 def get_coordinates_from_excel():
     wb = openpyxl.load_workbook(KMAC.EXCEL_FILENAME)
-    ws = wb.worksheets[0]
+    ws = wb.worksheets[KMAC.WORKSHEET]
 
     row = KMAC.START_ROW
     while ws[f"{KMAC.ADDRESS_COLUMN}{row}"].value:

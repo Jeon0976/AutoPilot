@@ -6,9 +6,10 @@
 # LATITUDE_COLUMN = Lat 좌표 값이 들어갈 열: B(기본값)
 # LONGITUDE_COLUMN = LNG 좌표 값이 들어갈 열: C(기본값)
 
-EXCEL_FILENAME = "test.xlsx"
-WORKSHEET = 0
-START_ROW = 1
-ADDRESS_COLUMN = "A"
-LATITUDE_COLUMN = "B"
-LONGITUDE_COLUMN = "C"
+class KakaoMapAddressToCoordinate: 
+    EXCEL_FILENAME = "seoul1_dodam-2.xlsx"
+    WORKSHEET = 1
+    START_ROW = 9
+    ADDRESS_COLUMN = "C"
+    LATITUDE_COLUMN = "D"
+    LONGITUDE_COLUMN = "E"
